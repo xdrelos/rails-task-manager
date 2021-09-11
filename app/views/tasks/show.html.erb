@@ -1,8 +1,12 @@
 <h1><%= @task.title %></h1>
-<p><%= @task.details %></p>
+<p class="bg-light bordered p-3 col-6"><%= @task.details %></p>
 <p>
-  <input type="checkbox" id="<%= @task.title %>" <%= "checked" if @task.completed %>>
-  <label for="<%= @task.title %>"><%= @task.completed ? "This task is completed" : "This task is not yet completed" %></label>
+  <% if @task.completed %>
+    <i class="far fa-check-square"></i>
+  <% else %>
+    <i class="far fa-square"></i>
+  <% end %>
+  <%= @task.completed ? "This task is completed" : "This task is not yet completed" %>
 </p>
-<%= link_to 'Edit', edit_task_path(@task) %>
-<%= link_to 'Back to list', tasks_path %>
+<%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-success' %>
+<%= link_to 'Back to list', tasks_path, class: 'btn btn-primary' %>
